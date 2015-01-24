@@ -3,7 +3,7 @@ apply plugin: 'application'
 apply plugin: 'idea'
 
 // The main class of the application
-mainClassName = 'com.example.helloworld.HelloWorldApplication'
+mainClassName = 'com.example.helloworld.application.HelloWorldApplication'
 version = '0.0.1-SNAPSHOT'
 
 //noinspection GroovyUnusedAssignment
