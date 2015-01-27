@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile group: "org.codehaus.groovy", name: 'groovy-all', version:'2.1.9'
+}
+
+// Make groovy source file location the same as java rather than in separate paths as is the default
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDir  'src' }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDir 'src' }
+    }
+}

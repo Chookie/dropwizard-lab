@@ -1,0 +1,22 @@
+apply plugin: 'application'
+
+// The main class of the application
+mainClassName = appMainClassName
+version = appVersion
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    // appends '-fat'
+    classifier 'fat'
+
+    manifest {
+        //noinspection GroovyAssignabilityCheck
+        attributes 'Implementation-Title': appDescription,
+                'Implementation-Version': version,
+                'Main-Class': mainClassName
+    }
+    // We have to exclude signature files from the fat JAR, otherwise we'll get invalid signature file digest errors.
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

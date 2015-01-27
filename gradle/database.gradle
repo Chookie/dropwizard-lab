@@ -1,0 +1,38 @@
+// https://raw.githubusercontent.com/gradleware/oreilly-gradle-book-examples/master/plugins/database-setup/database.gradle
+// http://chimera.labs.oreilly.com/books/1234000001741/ch02.html#_setup
+
+dependencies {
+    // h2 in memory database
+    runtime group: 'com.h2database', name: 'h2', version: '1.4.185'
+}
+
+
+task createDatabaseScript {
+    group = 'database'
+    doLast {
+        def fileName = 'starth2'
+        if(System.properties['os.name'].startsWith('Windows')) {
+            fileName += '.bat'
+        }
+        def file = new File(projectDir, fileName)
+        file.withPrintWriter {  pw ->
+            pw.print("java -cp ${sourceSets.main.runtimeClasspath.asPath} org.h2.tools.Server")
+        }
+        file.setExecutable(true)
+    }
+}
+
+task startDatabase(type: JavaExec) {
+    group = 'database'
+    workingDir = projectDir
+    main = 'org.h2.tools.Server'
+    classpath = runtimeClasspath
+}
+
+task buildSchema(type: JavaExec) {
+    group = 'workshop'
+    classpath = runtimeClasspath
+    workingDir = projectDir
+    main = 'org.h2.tools.RunScript'
+    args = ['-url', 'jdbc:h2:db/liquibase_workshop;FILE_LOCK=NO', '-user', 'sa', '-script', 'create-schema.sql']
+}
