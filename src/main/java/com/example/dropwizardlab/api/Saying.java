@@ -1,4 +1,4 @@
-package com.example.helloworld.api;
+package com.example.dropwizardlab.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

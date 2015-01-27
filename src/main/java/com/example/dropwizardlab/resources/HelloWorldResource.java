@@ -1,7 +1,7 @@
-package com.example.helloworld.resources;
+package com.example.dropwizardlab.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.example.helloworld.api.Saying;
+import com.example.dropwizardlab.api.Saying;
 import com.google.common.base.Optional;
 
 import javax.ws.rs.GET;

@@ -1,8 +1,8 @@
-package com.example.helloworld.application;
+package com.example.dropwizardlab.application;
 
-import com.example.helloworld.configuration.HelloWorldConfiguration;
-import com.example.helloworld.health.TemplateHealthCheck;
-import com.example.helloworld.resources.HelloWorldResource;
+import com.example.dropwizardlab.configuration.HelloWorldConfiguration;
+import com.example.dropwizardlab.health.TemplateHealthCheck;
+import com.example.dropwizardlab.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -12,12 +12,12 @@ import io.dropwizard.setup.Environment;
 /**
  * Created by Alison on 24/01/15
  */
-public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
+public class DropWizardLabApplication extends Application<HelloWorldConfiguration> {
 
     //final static Logger logger = LoggerFactory.getLogger(HelloWorldApplication.class);
 
     public static void main(String[] args) throws Exception {
-        new HelloWorldApplication().run(args);
+        new DropWizardLabApplication().run(args);
     }
 
     @Override
